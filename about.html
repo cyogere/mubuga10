@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - Kira Clinic</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background-color: #5eaa2f;
+      padding: 20px 40px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    section h2 {
+      font-size: 32px;
+      color: #2f792c;
+      margin-bottom: 20px;
+    }
+    section p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    .team {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .member {
+      background: #f5f5f5;
+      padding: 20px;
+      border-radius: 8px;
+      width: 250px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .member:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .member img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #5eaa2f;
+    }
+    footer {
+      background-color: #2f2f2f;
+      color: white;
+      padding: 40px;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    footer div {
+      margin: 10px 0;
+    }
+    footer a {
+      color: #ddd;
+      text-decoration: none;
+      display: block;
+      margin: 5px 0;
+    }
+    .copyright {
+      text-align: center;
+      padding: 10px;
+      background-color: #1e1e1e;
+      color: #ccc;
+      font-size: 14px;
+    }
+    .hero-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      margin-bottom: 40px;
+    }
+    .mission-vision {
+      display: flex;
+      gap: 30px;
+      margin: 40px 0;
+    }
+    .mission-vision div {
+      flex: 1;
+      padding: 20px;
+      border-radius: 8px;
+      background: #f9f9f9;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .mission-vision img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 15px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+    }
+    .gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 40px 0;
+      text-align: center;
+    }
+    .stat-item {
+      margin: 15px;
+    }
+    .stat-item h3 {
+      font-size: 36px;
+      color: #5eaa2f;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Kira Clinic</h1>
+    <nav>
+      <a href="kira_clinic_homepage.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="partnership.html">Partnership</a>
+      <a href="doctors.html">Our Doctors</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact us</a>
+    </nav>
+  </header>
+
+  <section>
+    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Kira Clinic Building" class="hero-image">
+
+    <h2>About Kira Clinic</h2>
+    <p>
+      Kira Clinic was founded with a simple yet powerful mission: to provide accessible, high-quality healthcare services to our community in Nyagatare and beyond. We believe in putting patients first by combining expert care with compassion and respect.
+    </p>
+
+    <div class="mission-vision">
+      <div>
+        <img src="https://cdn-icons-png.flaticon.com/512/4784/4784324.png" alt="Vision icon">
+        <h2>Our Vision</h2>
+        <p>
+          To become a leading healthcare provider in Rwanda, known for innovation, integrity, and a people-centered approach to health and wellness.
+        </p>
+      </div>
+      <div>
+        <img src="https://cdn-icons-png.flaticon.com/512/4784/4784333.png" alt="Mission icon">
+        <h2>Our Mission</h2>
+        <p>
+          We are committed to offering affordable, reliable, and holistic healthcare services that meet the needs of individuals and families across all age groups.
+        </p>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat-item">
+        <h3>15+</h3>
+        <p>Years of Experience</p>
+      </div>
+      <div class="stat-item">
+        <h3>10,000+</h3>
+        <p>Patients Served</p>
+      </div>
+      <div class="stat-item">
+        <h3>50+</h3>
+        <p>Healthcare Professionals</p>
+      </div>
+      <div class="stat-item">
+        <h3>24/7</h3>
+        <p>Emergency Services</p>
+      </div>
+    </div>
+
+    <h2>Our Facility</h2>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Clinic Reception">
+      <img src="https://images.unsplash.com/photo-1581595219315-a187dd40c322?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Examination Room">
+      <img src="https://images.unsplash.com/photo-1579684453423-f84349ef60b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Laboratory">
+      <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Waiting Area">
+    </div>
+
+    <h2>Meet Our Team</h2>
+    <div class="team">
+      <div class="member">
+        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Dr. Aline Mugisha">
+        <h4>Dr. Aline Mugisha</h4>
+        <p>General Practitioner</p>
+      </div>
+      <div class="member">
+        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Dr. Jean Bosco">
+        <h4>Dr. Jean Bosco</h4>
+        <p>Lab Specialist</p>
+      </div>
+      <div class="member">
+        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Dr. Grace Niyonsaba">
+        <h4>Dr. Grace Niyonsaba</h4>
+        <p>Vaccination Nurse</p>
+      </div>
+      <div class="member">
+        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Dr. Patrick Nzabandora">
+        <h4>Dr. Patrick Nzabandora</h4>
+        <p>Pediatrician</p>
+      </div>
+    </div>
+
+    <h2>Community Engagement</h2>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Health Camp">
+      <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Vaccination Drive">
+      <img src="https://images.unsplash.com/photo-1579684453423-f84349ef60b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="School Visit">
+      <img src="https://images.unsplash.com/photo-1581595219315-a187dd40c322?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Community Workshop">
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <h4>KIRA CLINIC</h4>
+      <p>Rwanda, Nyagatare District<br>Street: KE 20 ST<br>Phone: +250 787 888 888<br>Email: info@kiraclinic.com</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div>
+      <h4>Follow us</h4>
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">YouTube</a>
+    </div>
+  </footer>
+
+  <div class="copyright">
+    &copy; 2022 Copyright, Kira Clinic, Ltd
+  </div>
+
+</body>
+</html>

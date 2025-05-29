@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Services - Kira Clinic</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #5eaa2f;
+      padding: 20px 40px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+    nav a:hover {
+      background-color: rgba(255,255,255,0.2);
+    }
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+    .hero h2 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    section h2 {
+      font-size: 36px;
+      color: #2f792c;
+      margin-bottom: 40px;
+      text-align: center;
+      position: relative;
+    }
+    section h2:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #5eaa2f;
+      margin: 15px auto;
+    }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .service-box {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      border: 1px solid #eee;
+    }
+    .service-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    .service-box img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    .service-box h4 {
+      color: #2f792c;
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
+    .service-box p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #555;
+    }
+    .doctors-section {
+      background: #f9f9f9;
+      padding: 60px 20px;
+      margin: 60px 0;
+    }
+    .doctors-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .doctors {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .doctor-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+    .doctor-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .doctor-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+    .doctor-info {
+      padding: 20px;
+    }
+    .doctor-info h4 {
+      color: #2f792c;
+      margin: 10px 0 5px;
+      font-size: 22px;
+    }
+    .doctor-info p.specialty {
+      color: #5eaa2f;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+    .doctor-info p.bio {
+      color: #555;
+      margin-bottom: 15px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 60px 0;
+    }
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    footer {
+      background-color: #2f2f2f;
+      color: white;
+      padding: 60px 40px;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    footer div {
+      margin: 15px 0;
+      min-width: 200px;
+    }
+    footer h4 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    footer a {
+      color: #ddd;
+      text-decoration: none;
+      display: block;
+      margin: 10px 0;
+      transition: all 0.3s ease;
+    }
+    footer a:hover {
+      color: #5eaa2f;
+      padding-left: 5px;
+    }
+    .copyright {
+      text-align: center;
+      padding: 20px;
+      background-color: #1e1e1e;
+      color: #ccc;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Kira Clinic</h1>
+    <nav>
+      <a href="kira_clinic_homepage.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="partnership.html">Partnership</a>
+      <a href="doctors.html">Our Doctors</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact us</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h2>Comprehensive Healthcare Services</h2>
+      <p style="font-size: 20px;">Quality care for you and your family</p>
+    </div>
+  </div>
+
+  <section>
+    <h2>Our Medical Services</h2>
+    <div class="services">
+      <div class="service-box">
+        <img src="male.jpg" alt="General Consultation">
+        <h4>General Consultation</h4>
+        <p>Personalized health assessments and guidance from our experienced general practitioners for a wide range of medical concerns. Our doctors provide thorough examinations and tailored treatment plans.</p>
+      </div>
+      <div class="service-box">
+        <img src="https://images.unsplash.com/photo-1581595219315-a187dd40c322?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Laboratory Testing">
+        <h4>Laboratory Testing</h4>
+        <p>Comprehensive lab services including blood tests, urine analysis, and more using modern diagnostic technology. Fast and accurate results to support your diagnosis and treatment.</p>
+      </div>
+      <div class="service-box">
+        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Vaccination Programs">
+        <h4>Vaccination Programs</h4>
+        <p>Routine immunizations for children and adults to protect against infectious diseases and maintain public health. We follow national vaccination schedules and offer travel vaccines.</p>
+      </div>
+      <div class="service-box">
+        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Dental Care">
+        <h4>Dental Care</h4>
+        <p>Preventive, cosmetic, and surgical dental services including cleanings, fillings, extractions, and dental education. Our dental team focuses on pain-free treatments and oral health education.</p>
+      </div>
+      <div class="service-box">
+        <img src="mat.jpg" alt="Maternity & Prenatal Care">
+        <h4>Maternity & Prenatal Care</h4>
+        <p>Support for expectant mothers including prenatal checkups, ultrasound scans, and maternal health education. We provide compassionate care throughout pregnancy and postpartum.</p>
+      </div>
+      <div class="service-box">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Chronic Disease Management">
+        <h4>Chronic Disease Management</h4>
+        <p>Ongoing care and monitoring for conditions such as diabetes, hypertension, and asthma to improve quality of life. Our team helps patients manage long-term conditions effectively.</p>
+      </div>
+      <div class="service-box">
+        <img src="boy.jpg" alt="Child Health Services">
+        <h4>Child Health Services</h4>
+        <p>Pediatric services focused on the health and development of infants, children, and adolescents. We provide well-child visits, immunizations, and treatment for childhood illnesses.</p>
+      </div>
+      <div class="service-box">
+        <img src="nutri.jpg" alt="Nutrition Counseling">
+        <h4>Nutrition Counseling</h4>
+        <p>Advice and planning for balanced diets, weight management, and nutrition therapy for health conditions. Our nutritionists create personalized meal plans for optimal health.</p>
+      </div>
+      <div class="service-box">
+        <img src="heal.jpg" alt="Health Education">
+        <h4>Health Education</h4>
+        <p>Community outreach programs to raise awareness about hygiene, preventive care, and healthy lifestyles. We conduct workshops and seminars on various health topics.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="doctors-section">
+    <div class="doctors-container">
+      <h2>Meet Our Specialists</h2>
+      <div class="doctors">
+        <div class="doctor-card">
+          <img src="girl.jpg" alt="Dr. Aline Mugisha">
+          <div class="doctor-info">
+            <h4>Dr. Aline Mugisha</h4>
+            <p class="specialty">Chief Medical Officer & General Practitioner</p>
+            <p class="bio">With over 15 years of experience in family medicine, Dr. Mugisha leads our clinical team with expertise in preventive care and chronic disease management. She completed her medical training at the University of Rwanda and specializes in community health initiatives.</p>
+          </div>
+        </div>
+        <div class="doctor-card">
+          <img src="man.jpg" alt="Dr. Jean Bosco">
+          <div class="doctor-info">
+            <h4>Dr. Jean Bosco</h4>
+            <p class="specialty">Laboratory Specialist</p>
+            <p class="bio">Dr. Bosco brings 10 years of laboratory diagnostics experience to Kira Clinic. With advanced training in clinical pathology from Makerere University, he ensures accurate test results and implements quality control measures in our lab.</p>
+          </div>
+        </div>
+        <div class="doctor-card">
+          <img src="los.jpg" alt="Dr. Grace Niyonsaba">
+          <div class="doctor-info">
+            <h4>Dr. Grace Niyonsaba</h4>
+            <p class="specialty">Pediatrician & Vaccination Specialist</p>
+            <p class="bio">Dr. Niyonsaba specializes in child health and immunization programs. After completing her pediatrics residency at King Faisal Hospital, she has dedicated her career to improving child health outcomes in rural communities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <h2>Clinic Gallery</h2>
+    <div class="gallery">
+      <img src="me.jpg" alt="Clinic Reception">
+      <img src="exam.jpg" alt="Examination Room">
+      <img src="lab.jpg" alt="Laboratory">
+      <img src="wait.jpg" alt="Waiting Area">
+      <img src="phar.jpg" alt="Pharmacy">
+      <img src="dental.jpg" alt="Dental Clinic">
+      <img src="mat.jpg" alt="Maternity Ward">
+      <img src="boy.jpg" alt="Pediatric Area">
+      <img src="nutri.jpg" alt="Nutrition Counseling">
+      <img src="vacc.jpg" alt="Vaccination Room">
+      <img src="heal.jpg" alt="Health Education Session">
+      <img src="eme.jpg" alt="Emergency Room">
+      <img src="staff.jpg" alt="Staff Meeting">
+      <img src="comm.jpg" alt="Community Outreach">
+      <img src="med.jpg" alt="Medical Equipment">
+      <img src="pat.jpg" alt="Patient Consultation">
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <h4>KIRA CLINIC</h4>
+      <p>Rwanda, Nyagatare District<br>Street: KE 20 ST<br>Phone: +250 787 888 888<br>Email: info@kiraclinic.com</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="kira_clinic_homepage.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="doctors.html">Our Doctors</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div>
+      <h4>Follow us</h4>
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">YouTube</a>
+    </div>
+  </footer>
+
+  <div class="copyright">
+    &copy; 2022 Copyright, Kira Clinic, Ltd
+  </div>
+
+</body>
+</html>

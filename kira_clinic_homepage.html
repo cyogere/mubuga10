@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kira Clinic - Premium Healthcare Services</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2a7f3f;
+      --primary-light: #5eaa2f;
+      --secondary: #2f2f2f;
+      --accent: #f8f9fa;
+      --text: #333;
+      --text-light: #777;
+      --white: #ffffff;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.7;
+      color: var(--text);
+      background-color: var(--accent);
+      overflow-x: hidden;
+    }
+
+    /* Login Modal Styles */
+    .login-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .login-container {
+      background-color: var(--white);
+      padding: 40px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+      transform: translateY(-50px);
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+
+    .login-container.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .login-container h2 {
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .login-form .form-group {
+      margin-bottom: 20px;
+    }
+
+    .login-form label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--secondary);
+      font-weight: 500;
+    }
+
+    .login-form input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: var(--transition);
+    }
+
+    .login-form input:focus {
+      border-color: var(--primary-light);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(94, 170, 47, 0.2);
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--primary-light);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 10px;
+    }
+
+    .login-btn:hover {
+      background-color: var(--primary);
+    }
+
+    .login-footer {
+      text-align: center;
+      margin-top: 20px;
+      color: var(--text-light);
+    }
+
+    .login-footer a {
+      color: var(--primary-light);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .login-footer a:hover {
+      color: var(--primary);
+    }
+
+    /* Hide main content initially */
+    .main-content {
+      display: none;
+    }
+
+    .main-content.active {
+      display: block;
+    }
+
+    /* Rest of your existing CSS... */
+    /* Header Styles */
+    header {
+      background-color: var(--white);
+      padding: 15px 5%;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .header-scrolled {
+      padding: 10px 5%;
+      background-color: rgba(255, 255, 255, 0.98);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo h1 {
+      color: var(--primary);
+      font-size: 28px;
+      font-weight: 700;
+      margin-left: 10px;
+    }
+
+    .logo-icon {
+      color: var(--primary-light);
+      font-size: 32px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 30px;
+      position: relative;
+    }
+
+    .nav-links a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      padding: 5px 0;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-light);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--primary-light);
+      bottom: 0;
+      left: 0;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      min-height: 700px;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                  url('https://images.unsplash.com/photo-1607746882042-944635dfe10e') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+      margin-top: 70px;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      color: var(--white);
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero h2 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary {
+      background-color: var(--primary-light);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-secondary {
+      background-color: var(--white);
+      color: var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background-color: #f1f1f1;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Services Section */
+    .services-section {
+      padding: 100px 5%;
+      background-color: var(--white);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    .section-title h3 {
+      font-size: 2.5rem;
+      color: var(--secondary);
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h3::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 4px;
+      background: var(--primary-light);
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .section-title p {
+      color: var(--text-light);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .services-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-img {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .service-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .service-card:hover .service-img img {
+      transform: scale(1.1);
+    }
+
+    .service-content {
+      padding: 25px;
+    }
+
+    .service-content h4 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: var(--secondary);
+    }
+
+    .service-content h4 span {
+      color: var(--primary-light);
+    }
+
+    .service-content p {
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      color: var(--primary-light);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .read-more i {
+      margin-left: 5px;
+      transition: var(--transition);
+    }
+
+    .read-more:hover {
+      color: var(--primary);
+    }
+
+    .read-more:hover i {
+      transform: translateX(5px);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--secondary);
+      color: var(--white);
+      padding: 80px 5% 30px;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-col h4 {
+      font-size: 1.3rem;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-col h4::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--primary-light);
+    }
+
+    .footer-col p {
+      margin-bottom: 15px;
+      opacity: 0.8;
+      line-height: 1.8;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: #ddd;
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-block;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-light);
+      transform: translateX(5px);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: var(--white);
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--primary-light);
+      transform: translateY(-5px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding: 20px;
+      background-color: #1a1a1a;
+      color: #aaa;
+      font-size: 14px;
+      margin-top: 50px;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+
+    .animate.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .hero h2 {
+        font-size: 2.8rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: var(--white);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+      }
+
+      .nav-links.active {
+        left: 0;
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+      }
+
+      .nav-links a {
+        font-size: 1.2rem;
+      }
+
+      .hero {
+        min-height: 600px;
+      }
+
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+
+      .section-title h3 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+
+      .service-card {
+        max-width: 350px;
+        margin: 0 auto;
+      }
+
+      .login-container {
+        padding: 30px 20px;
+        margin: 0 15px;
+      }
+    }
+  
+    body.dark-mode {
+      --primary: #76c893;
+      --primary-light: #9dd9b6;
+      --secondary: #eeeeee;
+      --accent: #1e1e1e;
+      --text: #dddddd;
+      --text-light: #aaa;
+      --white: #121212;
+    }
+
+    .dark-toggle {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 26px;
+      margin-left: 20px;
+    }
+
+    .dark-toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .dark-toggle .slider {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #ccc;
+      border-radius: 26px;
+      cursor: pointer;
+      transition: 0.4s;
+    }
+
+    .dark-toggle .slider::before {
+      content: "";
+      position: absolute;
+      height: 20px; width: 20px;
+      left: 3px; bottom: 3px;
+      background-color: white;
+      border-radius: 50%;
+      transition: 0.4s;
+    }
+
+    .dark-toggle input:checked + .slider {
+      background-color: #4caf50;
+    }
+
+    .dark-toggle input:checked + .slider::before {
+      transform: translateX(24px);
+    }
+  </style>
+</head>
+<body>
+  <!-- Login Modal -->
+  <div class="login-modal" id="loginModal">
+    <div class="login-container" id="loginContainer">
+      <h2>Welcome to Kira Clinic</h2>
+      <form class="login-form" id="loginForm">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="login-btn">Login</button>
+        <div class="login-footer">
+          <p>Don't have an account? <a href="sign up.html">Register here</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main Content (hidden initially) -->
+  <div class="main-content" id="mainContent">
+    <!-- Header -->
+    <header id="header">
+      <div class="header-container">
+        <div class="logo">
+          <i class="fas fa-heartbeat logo-icon"></i>
+          <h1>Kira Clinic</h1>
+        </div>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
+        </button>
+        <label class="dark-toggle">
+          <input type="checkbox" id="darkModeToggle">
+          <span class="slider"></span>
+        </label>
+          
+        <nav>
+          <ul class="nav-links" id="navLinks">
+            <li><a href="#">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="partnership.html">Partnership</a></li>
+            <li><a href="doctors.html">Our Doctors</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Welcome to Kira Clinic</h2>
+        <p>Empowering health and well-being with compassionate, affordable, and expert care tailored to every individual.</p>
+        <div class="hero-buttons">
+          <a href="book.html" class="btn btn-primary">Book an Appointment</a>
+          <a href="services.html" class="btn btn-secondary">Explore Services</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+      <div class="section-title animate">
+        <h3>Comprehensive Health Services</h3>
+        <p>We provide a wide range of medical services to meet all your healthcare needs with the highest standards of quality and care.</p>
+      </div>
+
+      <div class="services-container">
+        <div class="service-card animate delay-1">
+          <div class="service-img">
+            <img src="male.jpg" alt="Doctor consultation">
+          </div>
+          <div class="service-content">
+            <h4>General <span>Consultations</span></h4>
+            <p>Our experienced doctors provide thorough medical consultations, helping you understand your symptoms and guiding you toward recovery with personalized treatment plans.</p>
+            <a href="#" class="read-more">Learn more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="service-card animate delay-2">
+          <div class="service-img">
+            <img src="micro.jpg" alt="Laboratory equipment">
+          </div>
+          <div class="service-content">
+            <h4>Advanced <span>Laboratory</span> Testing</h4>
+            <p>We offer a full range of diagnostic services, from blood tests to microbiology, using modern equipment for accurate and timely results to support your diagnosis.</p>
+            <a href="about.html" class="read-more">Learn more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="service-card animate delay-3">
+          <div class="service-img">
+            <img src="female.jpg" alt="Vaccination procedure">
+          </div>
+          <div class="service-content">
+            <h4>Immunizations <span>for Everyone</span></h4>
+            <p>Protect your loved ones with our safe and effective vaccination services for children, adults, and seniors—your first step toward a healthier community.</p>
+            <a href="about.html" class="read-more">Learn more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-col">
+          <h4>KIRA CLINIC</h4>
+          <p><i class="fas fa-map-marker-alt"></i> Rwanda, Nyagatare District</p>
+          <p><i class="fas fa-road"></i> Street: KE 20 ST</p>
+          <p><i class="fas fa-phone"></i> Phone: +250 785 244 214</p>
+          <p><i class="fas fa-envelope"></i> Email: info@kiraclinic.com</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Our Services</h4>
+          <ul class="footer-links">
+            <li><a href="#">Consultation</a></li>
+            <li><a href="#">Hospital</a></li>
+            <li><a href="#">Dentist</a></li>
+            <li><a href="#">Pediatrics</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="doctors.html">Our Doctors</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Follow us</h4>
+          <div class="social-links">
+            <a href="https://www.facebook.com/shine guy"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/dem.k.i.n.g12"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="youtube.com"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        &copy; 2025 Kira Clinic, Ltd. All Rights Reserved.
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Login Functionality
+    const loginModal = document.getElementById('loginModal');
+    const loginContainer = document.getElementById('loginContainer');
+    const loginForm = document.getElementById('loginForm');
+    const mainContent = document.getElementById('mainContent');
+
+    // Show login modal when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        loginContainer.classList.add('active');
+      }, 100);
+    });
+
+    // Handle login form submission
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Get form values
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      
+      // Simple validation (in a real app, you would check against a database)
+      if (username && password) {
+        // Hide login modal
+        loginContainer.classList.remove('active');
+        
+        // After animation completes, hide modal and show content
+        setTimeout(() => {
+          loginModal.style.display = 'none';
+          mainContent.classList.add('active');
+          
+          // Store login state in localStorage
+          localStorage.setItem('isLoggedIn', 'true');
+        }, 500);
+      } else {
+        alert('Please enter both username and password');
+      }
+    });
+
+    // Check if user is already logged in
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+      loginModal.style.display = 'none';
+      mainContent.classList.add('active');
+    }
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+
+    // Header Scroll Effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('header-scrolled');
+      }
+    });
+
+    // Dark Mode Toggle
+    const darkToggle = document.getElementById('darkModeToggle');
+    darkToggle.addEventListener('change', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+
+    // Intersection Observer for Animations
+    const animateElements = document.querySelectorAll('.animate');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    animateElements.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

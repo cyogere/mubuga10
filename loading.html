@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Kira Clinic</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      flex-direction: column;
+    }
+
+    .login-container, .loading-container {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .login-container.active, .loading-container.active {
+      display: flex;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      width: 250px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #2a7f3f;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .bar {
+      width: 300px;
+      height: 20px;
+      background-color: #eee;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+
+    .progress {
+      height: 100%;
+      width: 0%;
+      background-color: #2a7f3f;
+      animation: load 2s linear forwards;
+    }
+
+    @keyframes load {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container active" id="loginContainer">
+    <h2>Kira Clinic Login</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="handleLogin()">Login</button>
+    <div class="error" id="errorMsg"></div>
+  </div>
+
+  <div class="loading-container" id="loadingContainer">
+    <h2>Loading Kira Clinic...</h2>
+    <div class="bar"><div class="progress"></div></div>
+  </div>
+
+  <script>
+    const loginContainer = document.getElementById("loginContainer");
+    const loadingContainer = document.getElementById("loadingContainer");
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+    const errorMsg = document.getElementById("errorMsg");
+
+    // Example hardcoded credentials
+    const validUser = "admin";
+    const validPass = "kira123";
+
+    function handleLogin() {
+      const username = usernameInput.value.trim();
+      const password = passwordInput.value;
+
+      if (username === validUser && password === validPass) {
+        loginContainer.classList.remove("active");
+        loadingContainer.classList.add("active");
+
+        setTimeout(() => {
+          window.location.href = "kira_clinic_homepage.html";
+        }, 2000); // redirect after 2 seconds
+      } else {
+        errorMsg.textContent = "Invalid username or password.";
+      }
+    }
+  </script>
+
+</body>
+</html>

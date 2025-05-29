@@ -1,0 +1,206 @@
+/* Contact Page Styles */
+.contact-page {
+    padding: 100px 0 50px;
+    background: #f9f9f9;
+}
+
+.page-title {
+    color: #2a7fba;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 30px;
+}
+
+.contact-info {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.info-section {
+    margin-bottom: 30px;
+}
+
+.info-section h3 {
+    color: #2a7fba;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.info-section p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #555;
+}
+
+.info-section h2 {
+    color: #2a7fba;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.subheading {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.divider {
+    height: 1px;
+    background: #eee;
+    margin: 30px 0;
+}
+
+.contact-form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2a7fba;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #2a7fba;
+    outline: none;
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.contact-sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.clinic-info {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.clinic-info h3 {
+    color: #2a7fba;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.services-list h4,
+.social-links h4 {
+    color: #444;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.services-list ul,
+.social-links ul {
+    list-style: none;
+}
+
+.services-list li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #555;
+}
+
+.social-links li {
+    margin-bottom: 10px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #2a7fba;
+}
+
+.footer-info {
+    background: #2a7fba;
+    color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.footer-info p {
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.footer-info .copyright {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .contact-layout {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .contact-sidebar {
+        grid-column: span 2;
+        flex-direction: row;
+        gap: 30px;
+    }
+    
+    .clinic-info {
+        flex: 1;
+        margin-bottom: 0;
+    }
+    
+    .footer-info {
+        flex: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-sidebar {
+        grid-column: span 1;
+        flex-direction: column;
+    }
+}

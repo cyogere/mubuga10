@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kira Clinic - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      color: #333;
+    }
+    
+    /* Header Styles */
+    header {
+      background-color: #5eaa2f;
+      padding: 15px 40px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+    }
+    
+    nav {
+      display: flex;
+      align-items: center;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 5px 0;
+      position: relative;
+    }
+    
+    nav a:hover {
+      opacity: 0.9;
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: white;
+      transition: width 0.3s ease;
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.4), url('https://images.unsplash.com/photo-1607746882042-944635dfe10e') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 150px 20px;
+      position: relative;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .hero h2 {
+      font-size: 42px;
+      margin-bottom: 15px;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+    
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    
+    .hero button {
+      padding: 14px 28px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      min-width: 150px;
+    }
+    
+    .btn-green {
+      background-color: #2f792c;
+      color: white;
+    }
+    
+    .btn-green:hover {
+      background-color: #256622;
+      transform: translateY(-2px);
+    }
+    
+    .btn-white {
+      background-color: white;
+      color: #2f792c;
+    }
+    
+    .btn-white:hover {
+      background-color: #f0f0f0;
+      transform: translateY(-2px);
+    }
+    
+    /* Services Section */
+    .services-section {
+      padding: 80px 20px;
+      text-align: center;
+      background-color: #f9f9f9;
+    }
+    
+    .services-section h3 {
+      font-size: 32px;
+      margin-bottom: 60px;
+      color: #2f792c;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .services-section h3::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 3px;
+      background-color: #5eaa2f;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .service {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 40px auto;
+      flex-wrap: wrap;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .service:hover {
+      transform: translateY(-5px);
+    }
+    
+    .service img {
+      width: 45%;
+      max-width: 500px;
+      height: 350px;
+      object-fit: cover;
+    }
+    
+    .service-text {
+      width: 50%;
+      padding: 0 40px;
+      text-align: left;
+    }
+    
+    .service-text h4 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 15px;
+    }
+    
+    .service-text h4 span {
+      color: #5eaa2f;
+      font-weight: 600;
+    }
+    
+    .service-text p {
+      color: #666;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: #2f2f2f;
+      color: white;
+      padding: 60px 40px;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    
+    footer div {
+      flex: 1;
+      min-width: 250px;
+    }
+    
+    footer h4 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    footer h4::after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 2px;
+      background-color: #5eaa2f;
+      bottom: 0;
+      left: 0;
+    }
+    
+    footer p, footer a {
+      color: #ddd;
+      margin-bottom: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    footer a {
+      display: block;
+      text-decoration: none;
+    }
+    
+    footer a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding: 20px;
+      background-color: #1e1e1e;
+      color: #ccc;
+      font-size: 14px;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .service {
+        flex-direction: column;
+      }
+      
+      .service img, .service-text {
+        width: 100%;
+      }
+      
+      .service-text {
+        padding: 30px;
+      }
+      
+      .service:nth-child(even) .service-text {
+        order: 2;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 15px;
+      }
+      
+      nav {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      nav a {
+        margin: 5px 15px;
+      }
+      
+      .hero {
+        padding: 100px 20px;
+      }
+      
+      .hero h2 {
+        font-size: 32px;
+      }
+      
+      .hero p {
+        font-size: 18px;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .hero button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Kira Clinic</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#">Partnership</a>
+      <a href="#">Our Doctors</a>
+      <a href="#">About</a>
+      <a href="contact.html">Contact us</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Welcome to Kira Clinic</h2>
+      <p>Your trusted healthcare partner with personalized and affordable services</p>
+      <div class="hero-buttons">
+        <button class="btn-green">Get Started</button>
+        <button class="btn-white">Learn More</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section">
+    <h3>Our Services</h3>
+
+    <div class="service">
+      <img src="male.jpg" alt="Treatment for illness"/>
+      <div class="service-text">
+        <h4>Treatment for <span>illness</span></h4>
+        <p>Comprehensive medical care for various health conditions, provided by our experienced healthcare professionals. We offer personalized treatment plans to ensure optimal recovery and wellness.</p>
+      </div>
+    </div>
+
+    <div class="service">
+      <div class="service-text">
+        <h4>Basic <span>laboratory</span></h4>
+        <p>State-of-the-art diagnostic services with accurate and timely results. Our laboratory is equipped to handle a wide range of tests to support your healthcare needs.</p>
+      </div>
+      <img src="micro.jpg" alt="Basic laboratory"/>
+    </div>
+
+    <div class="service">
+      <img src="female.jpg" alt="Vaccination"/>
+      <div class="service-text">
+        <h4>Vaccinations <span>for all</span></h4>
+        <p>Protect yourself and your family with our complete vaccination services. We offer immunizations for children and adults, following national and international guidelines.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <h4>KIRA CLINIC</h4>
+      <p>Rwanda, Nyagatare District<br>Street: KE 20 ST<br>Phone: +250 787 888 888<br>Email: info@kiraclinic.com</p>
+    </div>
+    <div>
+      <h4>Our Services</h4>
+      <a href="#">Consultation</a>
+      <a href="#">Hospital</a>
+      <a href="#">Dentist</a>
+      <a href="#">Laboratory</a>
+    </div>
+    <div>
+      <h4>Follow us</h4>
+      <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+      <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+      <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+    </div>
+  </footer>
+
+  <div class="copyright">
+    &copy; 2023 Copyright, Kira Clinic, Ltd
+  </div>
+</body>
+</html>
